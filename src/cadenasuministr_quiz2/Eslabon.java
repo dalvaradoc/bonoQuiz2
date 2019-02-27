@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Estudiante
  */
-public class Eslabon {
+public abstract class Eslabon {
     private String nombre;
     private String descripcion;
     private String direccion;
@@ -49,9 +49,8 @@ public class Eslabon {
         this.direccion = direccion;
     }
     
-    public boolean addVenta (MateriaPrima mP, Eslabon eslabon){
-        return registro.add(new RegistroVenta(mP, eslabon));
-    }
+    public abstract boolean comprar (Eslabon esl, String mP, int cantidad);
+    public abstract ArrayList<MateriaPrima> vender (Eslabon esl, String mP, int cantidad);
     
     
 }

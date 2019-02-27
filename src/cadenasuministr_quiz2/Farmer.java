@@ -23,4 +23,31 @@ public class Farmer extends Eslabon{
     public boolean addCultivo (String nombreC, String fechaC){
         return cultivos.add(new MateriaPrima(nombreC, fechaC, this.getNombre()));
     }
+
+    @Override
+    public boolean comprar(Eslabon esl, String mP, int cantidad) {
+        return true;
+    }
+
+    @Override
+    public ArrayList<MateriaPrima> vender(Eslabon esl, String mP, int cantidad) {
+        int c = 0;
+        ArrayList<MateriaPrima> paraVender = new ArrayList<>();
+        for (MateriaPrima m : cultivos){
+            if (m.getNombre().equals(mP)){
+                paraVender.add(m);
+                this.cultivos.remove(m);
+                c++;
+            }
+            if (c == cantidad){
+                this.registro.add(new RegistroVenta(mP, esl, c));
+                return paraVender;
+            }
+        }
+        this.registro.add(new RegistroVenta(mP, esl, c));
+        return paraVender;
+    }
+
+    
+    
 }

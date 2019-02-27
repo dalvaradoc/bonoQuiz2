@@ -12,20 +12,28 @@ import java.util.ArrayList;
  * @author Estudiante
  */
 public class RegistroVenta {
-    private MateriaPrima materiaPrima;
+    private String materiaPrima;
     private Eslabon eslabon;
+    private int cantidad;
 
-    public RegistroVenta(MateriaPrima materiaPrima, Eslabon eslabon) {
+    public RegistroVenta(String materiaPrima, Eslabon eslabon, int cantidad) {
         this.materiaPrima = materiaPrima;
         this.eslabon = eslabon;
+        this.cantidad = cantidad;
     }
 
-    public MateriaPrima getMateriaPrima() {
+    public String getMateriaPrima() {
         return materiaPrima;
     }
 
     public Eslabon getEslabon() {
         return eslabon;
     }    
+
+    public int getCantidad() {
+        return cantidad;
+    }
+    
+    
     
 }

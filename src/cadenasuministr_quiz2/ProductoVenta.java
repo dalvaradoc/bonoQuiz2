@@ -11,10 +11,31 @@ package cadenasuministr_quiz2;
  */
 public class ProductoVenta extends Producto{
     
-    
-    
-    public ProductoVenta(String nombre, String fecha, String procedencia, int numeroLote) {
-        super(nombre, fecha, procedencia, numeroLote);
+    private double precio;
+    private String codigo;
+
+    public ProductoVenta (Producto prod, double precio, String codigo){
+        super(prod.getNombre(), prod.getFecha(),prod.getProcedencia(), prod.getNumeroLote());
+        this.precio = precio;
+        this.codigo = codigo;
     }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+    
     
 }
