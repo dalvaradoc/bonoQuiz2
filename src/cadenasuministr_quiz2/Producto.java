@@ -5,6 +5,8 @@
  */
 package cadenasuministr_quiz2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Estudiante
@@ -12,10 +14,12 @@ package cadenasuministr_quiz2;
 public class Producto extends MateriaPrima {
     
     private int numeroLote;
-    
-    public Producto(String nombre, String fecha, String procedencia, int numeroLote) {
-        super(nombre, fecha, procedencia);
+    private ArrayList<MateriaPrima> materiaPrima;
+
+    public Producto(int numeroLote, ArrayList<MateriaPrima> materiaPrima, String nombreP, String fechaP, String procedenciaP) {
+        super(nombreP, fechaP, procedenciaP);
         this.numeroLote = numeroLote;
+        this.materiaPrima = materiaPrima;
     }
 
     public int getNumeroLote() {
@@ -25,7 +29,14 @@ public class Producto extends MateriaPrima {
     public void setNumeroLote(int numeroLote) {
         this.numeroLote = numeroLote;
     }
-    
+
+    public ArrayList<MateriaPrima> getMateriaPrima() {
+        return materiaPrima;
+    }
+
+    public void setMateriaPrima(ArrayList<MateriaPrima> materiaPrima) {
+        this.materiaPrima = materiaPrima;
+    }   
     
     
 }

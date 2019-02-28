@@ -21,11 +21,16 @@ public class Retail extends Eslabon {
         this.productosVenta = new ArrayList<>();
     }
     
-    public boolean addProducto (Producto prod, double precio, String codigo){
-        ProductoVenta prodV = (ProductoVenta)prod;
-        prodV.setCodigo(codigo);
-        prodV.setPrecio(precio);
-        return productosVenta.add(prodV);
+    public boolean addProducto (String prodName, double precio, String codigo, String fechaCompra){
+        for (Producto p : productos){
+            if (p.getNombre().equals(prodName)){
+                ProductoVenta prodV = new ProductoVenta(p, precio, codigo);
+                prodV.setFecha(prodV.getFecha() + "," + fechaCompra);
+                prodV.setProcedencia(prodV.getProcedencia() + "," + this.getNombre());
+                return productosVenta.add(prodV);
+            }
+        }
+        return false;
     }
 
     @Override
@@ -43,6 +48,39 @@ public class Retail extends Eslabon {
         return null;
     }
     
+    public ProductoVenta venderProducto (String nombrePV){
+        for (ProductoVenta pv : productosVenta){
+            if (pv.getNombre().equals(nombrePV)){
+                return pv;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public ArrayList<ProductoVenta> getProductosVenta() {
+        return productosVenta;
+    }
     
-    
+    public String getInfoProductosVenta () {
+        String info = "";
+        ArrayList<String> nombresM = new ArrayList<>();
+        for (ProductoVenta pvi : productosVenta){
+            if (nombresM.contains(pvi.getNombre())){
+                continue;
+            }
+            int c = 0;
+            nombresM.add(pvi.getNombre());
+            for (ProductoVenta pvj : productosVenta){
+                if (pvj.getNombre().equals(pvi.getNombre())){
+                    c++;
+                }
+            }
+            info += pvi.getNombre() + ": " + c + "\r\n";
+        }
+        return info;
+    }
 }

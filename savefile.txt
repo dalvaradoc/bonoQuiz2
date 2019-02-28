@@ -1,0 +1,2 @@
+Pan,300.0,00001,1,Manufactura W,centro de distribucion,Retail R,27/02/2019,27/02/2019,28/02/2019,2,Leche,18/02/2019,Granja X,Harina,26/02/2019,Granja Y,
+

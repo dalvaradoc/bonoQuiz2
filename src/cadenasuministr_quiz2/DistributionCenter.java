@@ -20,8 +20,19 @@ public class DistributionCenter extends Eslabon {
         productos = new ArrayList<>();
     }
     
-    public boolean addProducto (Producto productoM){
-        return productos.add(productoM);
+    public boolean addProducto (String nombreP, String fecha){
+        Producto prodMP = null;
+        for (Producto p : productos){
+            if (p.getNombre().equals(nombreP)){
+                prodMP = p;
+                prodMP.setProcedencia(p.getProcedencia() + "," + this.getNombre());
+                prodMP.setFecha(p.getFecha() + "," + fecha);
+                if (productos.set(productos.indexOf(p), prodMP) != null){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -53,5 +64,22 @@ public class DistributionCenter extends Eslabon {
         return paraVender;
     }
     
-    
+    public String getInfoProductos () {
+        String info = "";
+        ArrayList<String> nombresM = new ArrayList<>();
+        for (Producto pi : productos){
+            if (nombresM.contains(pi.getNombre())){
+                continue;
+            }
+            int c = 0;
+            nombresM.add(pi.getNombre());
+            for (Producto pj : productos){
+                if (pj.getNombre().equals(pi.getNombre())){
+                    c++;
+                }
+            }
+            info += pi.getNombre() + ": " + c + "\r\n";
+        }
+        return info;
+    }
 }

@@ -15,7 +15,7 @@ public class ProductoVenta extends Producto{
     private String codigo;
 
     public ProductoVenta (Producto prod, double precio, String codigo){
-        super(prod.getNombre(), prod.getFecha(),prod.getProcedencia(), prod.getNumeroLote());
+        super(prod.getNumeroLote(), prod.getMateriaPrima(), prod.getNombre(), prod.getFecha(), prod.getProcedencia());
         this.precio = precio;
         this.codigo = codigo;
     }
@@ -34,8 +34,6 @@ public class ProductoVenta extends Producto{
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
-    }
-    
-    
+    }    
     
 }
